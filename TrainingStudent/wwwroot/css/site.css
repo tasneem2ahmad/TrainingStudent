@@ -1,0 +1,44 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.admincontainer{
+    margin-top2rem;
+    display:flex;
+    justify-content:space-between;
+}
+.dashboardadmincontainer {
+    background-color: mediumpurple;
+    width: 35%;
+    margin-right: 12rem;
+    height: 43rem;
+    margin-bottom:0px;
+}
+.listofdashboard {
+    height: 100% !important;
+    list-style:none;
+    font-family:'Microsoft PhagsPa';
+    font-size:large;
+}
+.listelements {
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+}
+#togglePassword {
+    margin-left: -30px;
+    cursor: pointer;
+}

@@ -1,0 +1,41 @@
+﻿@using Training.DAL.Entities
+@model CourseViewModel
+<div class="col-auto">
+    @if (Model != null && Model.Id != 0)
+    {
+        <input asp-for="Id" hidden />
+    }
+    <label asp-for="Name" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="Description" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="Duration" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Duration" class="form-control" />
+    <span asp-validation-for="Duration" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="DepartmentId" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <select asp-for="DepartmentId" class="form-control">
+
+        @foreach (var ins in ViewData["department"] as List<Department>)
+        {
+            <option value="@ins.Id">@ins.Name</option>
+        }
+
+    </select>
+    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+</div>

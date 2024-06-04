@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Training.DAL.Entities;
+@model RoleViewModel;
+
+<form asp-action="Details" id="form" data-id="@(Model?.Id ?? null)">
+    <partial name="_EditDeleteRole" />
+    <div class="col-auto">
+        <label asp-for="NormalizedName" class="col-form-label"></label>
+    </div>
+    <div class="col-auto">
+        <input asp-for="NormalizedName" class="form-control" />
+        <span asp-validation-for="NormalizedName" class="text-danger"></span>
+    </div>
+    <br />
+    <div>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">
+            <i class="fas fa-edit"></i>
+            Edit
+        </a> |
+        <a asp-action="Index" class="btn btn-outline-dark"><i class="fa-solid fa-house"></i> Back</a>
+    </div>
+
+</form>
+

@@ -1,0 +1,11 @@
+﻿@using Training.DAL.Entities;
+
+@model CourseViewModel
+<h2>Update Course</h2>
+<form asp-action="Edit" id="form" data-id="@(Model?.Id ?? null)">
+    <partial name="_createEditDeleteCourse" />
+    <br />
+    <div class="col-auto">
+        <input type="submit" class="btn btn-primary" />
+    </div>
+</form>

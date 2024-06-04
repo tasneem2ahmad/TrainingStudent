@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model RoleViewModel
+<form asp-action="Create" id="form">
+    <div class="col-auto">
+        @if (Model != null && Model.Id != null)
+        {
+            <input asp-for="Id" hidden />
+            <input asp-for="NormalizedName" type="hidden"/>
+        }
+        <label asp-for="Name" class="col-form-label"></label>
+    </div>
+    <div class="col-auto">
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <br />
+    <div>
+        <input type="submit" class="btn btn-primary" />
+    </div>
+
+</form>
+

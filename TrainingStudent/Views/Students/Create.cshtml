@@ -1,0 +1,10 @@
+﻿@using Training.DAL.Entities;
+@model StudentViewModel;
+<h1>Add Student</h1>
+<form asp-action="Create" id="form">
+    <partial name="_CreateEditStudent" />
+    <br />
+    <div class="col-auto">
+        <input type="submit" class="btn btn-primary" />
+    </div>
+</form>

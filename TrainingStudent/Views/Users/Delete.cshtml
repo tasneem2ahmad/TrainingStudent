@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Training.DAL.Entities;
+@model UserViewModel
+<h1>Delete User</h1>
+<form asp-action="Delete" id="form" id="form" data-id="@(Model?.Id ?? null)">
+    <partial name="_UserEditDelete" />
+    <div class="col-auto">
+        <label asp-for="Role" class="col-form-label"></label>
+    </div>
+    <div class="col-auto">
+        <select asp-for="Role" class="form-control">
+
+            @foreach (var ins in ViewData["Roles"] as List<IdentityRole>)
+            {
+                <option value="@ins.Name">@ins.Name</option>
+            }
+
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a input type="button" href="/Teacher/Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+</form>

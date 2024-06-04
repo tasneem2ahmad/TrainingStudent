@@ -1,0 +1,11 @@
+﻿@using Training.DAL.Entities;
+@model StudentViewModel;
+<h1>Delete Student</h1>
+<form asp-action="Delete" id="form" id="form" data-id="@(Model?.Id ?? 0)">
+    <partial name="_CreateEditStudent" />
+    <br />
+    <div>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a input type="button" href="/Teacher/Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+</form>

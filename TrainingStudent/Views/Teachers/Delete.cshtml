@@ -1,0 +1,16 @@
+﻿@using Training.DAL.Entities;
+
+@model TeacherViewModel
+<form asp-action="Delete" asp-controller="Teacher" id="form" data-id="@(Model?.Id ?? 0)" enctype="multipart/form-data">
+    <partial name="_CreateEditTeacherPartialView" />
+    <div>
+        <td><img src="~/files//Imgs/@Model.ImageName" class="img-fluid rounded" height="40" width="40" alt="TeacherName" /></td>
+    </div>
+    <input hidden asp-for="ImageName" />
+    <br />
+    <div>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a input type="button" href="/Teacher/Index"  class="btn btn-outline-secondary" >Back</a>
+    </div>
+
+</form>

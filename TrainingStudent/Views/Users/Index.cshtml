@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Training.DAL.Entities
+
+@model IEnumerable<UserViewModel>
+
+
+<br />
+@* <form asp-action="Index">
+    <div class="row">
+        <div class="col-sm-8">
+            <input placeholder="Search Name" name="SearchValue" class="form-control" />
+        </div>
+        <div class="col-sm-4">
+            <input type="submit" value="Search" class=" btn btn-success" />
+        </div>
+    </div>
+</form> *@
+<br />
+@if (Model.Count() == 0)
+{
+    <div class="bg-warning">
+        <h1> No Users yet</h1>
+    </div>
+}
+
+else
+{
+    <br />
+    <table class="table d-lg-table-cell">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(d => d.Id)</th>
+                <th>@Html.DisplayNameFor(d => d.UserName)</th>
+                <th>@Html.DisplayNameFor(d => d.Email)</th>
+                <th>@Html.DisplayNameFor(d => d.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(d => d.Role)</th>
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Manage Permissions</th>
+            </tr>
+        </thead>
+
+        @foreach (UserViewModel item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserName</td>
+                    <td>
+                        <a href="mailto:@item.Email">@item.Email</a>
+                    </td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Role?.Trim()</td>
+                    <td>
+                        <partial name="_ButtonsIndex" model="item.Id" />
+                    <td>
+                        <a class="btn btn-outline-secondary" asp-controller="Users" asp-action="ManagePermissions" asp-route-userId="@item.Id">
+                            <i class="fas fa-cog"></i>
+                            Manage Permissions
+                        </a>
+                    </td>
+                    </td>
+                </tr>
+            </tbody>
+        }
+
+
+    </table>
+
+
+}

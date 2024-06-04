@@ -1,0 +1,22 @@
+﻿@using Training.DAL.Entities;
+
+@model Department
+<form asp-action="Delete" id="form">
+    <div class="col-auto">
+        @if (Model != null && Model.Id != 0)
+        {
+            <input asp-for="Id" hidden />
+        }
+        <label asp-for="Name" class="col-form-label"></label>
+    </div>
+    <div class="col-auto">
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a input type="button" href="/Department/Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+
+</form>

@@ -1,0 +1,78 @@
+﻿@using Training.DAL.Entities;
+@model StudentViewModel
+<div class="col-auto">
+    @if (Model != null && Model.Id != 0)
+    {
+        <input asp-for="Id" hidden />
+    }
+    <label asp-for="Name" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="Gender" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Gender" class="form-control" />
+    <span asp-validation-for="Gender" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="Email" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="PhoneNumber" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="PhoneNumber" class="form-control" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="Age" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Age" class="form-control" />
+    <span asp-validation-for="Age" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="YearofSchool" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="YearofSchool" class="form-control" />
+    <span asp-validation-for="YearofSchool" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="City" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="City" class="form-control" />
+    <span asp-validation-for="City" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="SchoolGrade" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="SchoolGrade" class="form-control" />
+    <span asp-validation-for="SchoolGrade" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="DepartmentID" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <select asp-for="DepartmentID" class="form-control">
+
+        @foreach (var ins in ViewData["department"] as List<Department>)
+        {
+            <option value="@ins.Id">@ins.Name</option>
+        }
+
+    </select>
+    <span asp-validation-for="DepartmentID" class="text-danger"></span>
+</div>
+
+</div>

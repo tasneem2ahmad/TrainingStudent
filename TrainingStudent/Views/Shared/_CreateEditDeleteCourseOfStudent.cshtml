@@ -1,0 +1,68 @@
+﻿@using Training.DAL.Entities
+@model CourseStudentViewModel
+<div class="col-auto">
+    @if (Model != null && Model.Id != 0)
+    {
+        <input asp-for="Id" hidden />
+        <input asp-for="StudentID" hidden />
+        <input asp-for="CourseID" hidden />
+    }
+    <label class="col-form-label">Student Name</label>
+</div>
+<div class="col-auto">
+    <select asp-for="StudentID" id="selectedStudent" class="form-control">
+
+        @if (ViewData["Student"] != null)
+        {
+            foreach (var student in ViewData["Student"] as List<Student>)
+            {
+                <option value="@student.Id">@student.Name</option>
+            }
+        }
+    </select>
+    <span asp-validation-for="StudentID" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label class="col-form-label">Course Name</label>
+</div>
+<div class="col-auto">
+    <select asp-for="CourseID" id="selectedCourse" class="form-control">
+        @if (ViewData["Course"] != null)
+        {
+            @foreach (var ins in ViewData["Course"] as List<Course>)
+            {
+                <option value="@ins.Id">@ins.Name</option>
+            }
+        }
+    </select>
+    <span asp-validation-for="CourseID" class="text-danger"></span>
+
+</div>
+<div class="col-auto">
+    <label asp-for="MidDegree" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="MidDegree" class="form-control" />
+    <span asp-validation-for="MidDegree" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="PracticalDegree" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="PracticalDegree" class="form-control" />
+    <span asp-validation-for="PracticalDegree" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="FinalDegree" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="FinalDegree" class="form-control" />
+    <span asp-validation-for="FinalDegree" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="Max" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Max" class="form-control" />
+    <span asp-validation-for="Max" class="text-danger"></span>
+</div>

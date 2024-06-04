@@ -1,0 +1,17 @@
+﻿@using Training.DAL.Entities;
+@model Department
+<form asp-action="Edit" asp-controller="Department" id="form" data-id="@(Model?.Id ?? 0)">
+    <div class="col-auto">
+        <input asp-for="Id" hidden value="@Model.Id" />
+        <label asp-for="Name" class="col-form-label"></label>
+    </div>
+    <div class="col-auto">
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+
+</form>

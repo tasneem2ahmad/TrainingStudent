@@ -1,0 +1,12 @@
+﻿@using Training.DAL.Entities;
+
+@model CourseViewModel
+<h2>Delete Course</h2>
+<form asp-action="Delete" id="form" data-id="@(Model?.Id ?? null)">
+    <partial name="_createEditDeleteCourse" />
+    <br />
+    <div>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a input type="button" href="/Courses/Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+</form>

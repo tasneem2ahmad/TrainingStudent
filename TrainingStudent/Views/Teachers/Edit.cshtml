@@ -1,0 +1,21 @@
+﻿@using Training.DAL.Entities;
+
+@model TeacherViewModel
+<form asp-action="Edit" asp-controller="Teacher" id="form" data-id="@(Model?.Id ?? 0)" enctype="multipart/form-data">
+    <partial name="_CreateEditTeacherPartialView" />
+    <input hidden asp-for="ImageName" />
+    <br />
+    <div class="col-auto">
+        <label asp-for="Image" class="col-form-label"></label>
+    </div>
+    <div class="col-auto">
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    
+    <br />
+    <div>
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+
+</form>

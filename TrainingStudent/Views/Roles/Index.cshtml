@@ -1,0 +1,74 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Microsoft.AspNetCore.Identity
+@using Training.DAL.Entities
+@using TrainingStudent.Models
+@model List<RoleViewModel>
+
+
+<a href="/Roles/Create" class="btn btn-secondary" type="submit"> Add Role </a>
+<br />
+<br />
+@if (Model.Count() == 0)
+{
+    <div class="bg-warning">
+        <h1> No Roles yet</h1>
+    </div>
+}
+
+else
+{
+<br />
+<table class="table d-lg-table-cell">
+    <thead>
+        <tr>
+            <th>M</th>
+            <th>RoleName</th>
+
+
+
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>ManagePermissions</th>
+        </tr>
+    </thead>
+
+        @for (int i = 0; i < Model.Count; i++)
+    {
+        <tbody>
+
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model[i].Name</td>
+
+                    <partial name="_ButtonsIndex" model="@Model[i].Id">
+
+                            <td>
+                            <a class="btn btn-outline-secondary" asp-action="ManagePermissions"asp-route-roleId="@Model[i].Id">
+                                    <i class="fas fa-cog"></i>
+                                    Manage Permissions
+                                </a>
+                            </td>
+                       
+                        
+
+
+
+                </tr>
+        </tbody>
+        
+    }
+
+</table>
+
+
+}
+
+
+
+

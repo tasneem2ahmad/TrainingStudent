@@ -1,0 +1,14 @@
+﻿@using Training.DAL.Entities;
+@model UserViewModel
+<h1>Details of User</h1>
+<form asp-action="Details" id="form">
+    <partial name="_UserEditDelete" />
+    <br />
+    <div>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">
+            <i class="fas fa-edit"></i>
+            Edit
+        </a> |
+        <a asp-action="Index" class="btn btn-outline-dark"><i class="fa-solid fa-house"></i> Back</a>
+    </div>
+</form>

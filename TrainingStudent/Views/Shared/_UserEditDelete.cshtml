@@ -1,0 +1,30 @@
+﻿@using Training.DAL.Entities;
+@model UserViewModel
+<div class="col-auto">
+    @if (Model != null && Model.Id != null)
+    {
+        <input asp-for="Id" hidden />
+    }
+    <label asp-for="UserName" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="UserName" class="form-control" />
+    <span asp-validation-for="UserName" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="PhoneNumber" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="PhoneNumber" class="form-control" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="Email" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+</div>
+
+
+

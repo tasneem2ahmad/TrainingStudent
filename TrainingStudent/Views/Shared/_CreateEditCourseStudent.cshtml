@@ -1,0 +1,230 @@
+﻿@using Training.DAL.Entities
+@model StudentWithCourseViewModel
+<div class="col-auto">
+    @if (Model != null && Model.ID !=0)
+    {
+        <input asp-for="ID" hidden />
+        <input asp-for="StudentId" hidden />
+        <input asp-for="CourseId" hidden /> 
+    }
+    <label  class="col-form-label">Student Name</label>
+</div>
+<div class="col-auto">
+    <select asp-for="StudentId" id="selectedStudent" class="form-control">
+
+        @if (ViewData["Student"] != null)
+        {
+            foreach (var student in ViewData["Student"] as List<Student>)
+            {
+                <option value="@student.Id">@student.Name</option>
+            }
+        }
+
+
+    </select>
+
+    <span asp-validation-for="StudentId" class="text-danger"></span>
+        
+</div>
+
+
+<div class="col-auto">
+    <label class="col-form-label">Course Name</label>
+</div>
+<div class="col-auto">
+    <select asp-for="CourseId" id="selectedCourse" class="form-control">
+        @if (ViewData["Course"] != null) {
+            @foreach (var ins in ViewData["Course"] as List<Course>)
+            {
+                <option value="@ins.Id">@ins.Name</option>
+
+
+            }
+        
+        }
+
+    </select>
+    <span asp-validation-for="CourseId" class="text-danger"></span>
+
+</div>
+
+        <div class="col-auto">
+            <label asp-for="@Model.StudentEmail" class="col-form-label"></label>
+        </div>
+        <div class="col-auto">
+    <input asp-for="@Model.StudentEmail" class="form-control" id="email"  readonly />
+    <span asp-validation-for="@Model.StudentEmail" class="text-danger"></span>
+        </div>
+        <div class="col-auto">
+            <label asp-for="@Model.StudentDepartment" class="col-form-label"></label>
+        </div>
+        <div class="col-auto">
+    <input asp-for="@Model.StudentDepartment" class="form-control" id="departmentId" readonly />
+    <span asp-validation-for="@Model.StudentDepartment" class="text-danger"></span>
+        </div>
+        <div class="col-auto">
+            <label asp-for="@Model.PhoneNumber" class="col-form-label"></label>
+        </div>
+        <div class="col-auto">
+    <input asp-for="@Model.PhoneNumber" class="form-control" id="phoneNumber" readonly />
+    <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="col-auto">
+            <label asp-for="@Model.YearOfSchool" class="col-form-label"></label>
+        </div>
+        <div class="col-auto">
+    <input asp-for="@Model.YearOfSchool" class="form-control" id="yearOfSchool"  readonly />
+    <span asp-validation-for="@Model.YearOfSchool" class="text-danger"></span>
+        </div>
+        <div class="col-auto">
+            <label asp-for="@Model.SchoolGrade" class="col-form-label"></label>
+        </div>
+        <div class="col-auto">
+    <input asp-for="@Model.SchoolGrade" class="form-control" id="schoolGrade" readonly />
+    <span asp-validation-for="@Model.SchoolGrade" class="text-danger"></span>
+        </div>
+    
+
+        <div class="col-auto">
+            <label asp-for="@Model.CourseDuration" class="col-form-label"></label>
+        </div>
+        <div class="col-auto">
+    <input asp-for="@Model.CourseDuration" class="form-control" id="duration" readonly />
+    <span asp-validation-for="@Model.CourseDuration" class="text-danger"></span>
+        </div>
+        <div class="col-auto">
+            <label asp-for="@Model.CourseDepartment" class="col-form-label"></label>
+        </div>
+        <div class="col-auto">
+    <input asp-for="@Model.CourseDepartment" class="form-control" id="departmentId" readonly />
+    <span asp-validation-for="@Model.CourseDepartment" class="text-danger"></span>
+        </div>
+
+
+
+
+<div class="col-auto">
+    <label asp-for="MidDegree" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="MidDegree" class="form-control" />
+    <span asp-validation-for="MidDegree" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="PracticalDegree" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="PracticalDegree" class="form-control" />
+    <span asp-validation-for="PracticalDegree" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="FinalDegree" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="FinalDegree" class="form-control" />
+    <span asp-validation-for="FinalDegree" class="text-danger"></span>
+</div>
+<div class="col-auto">
+    <label asp-for="MaxDegree" class="col-form-label"></label>
+</div>
+<div class="col-auto">
+    <input asp-for="MaxDegree" class="form-control" />
+    <span asp-validation-for="MaxDegree" class="text-danger"></span>
+</div>
+@* <script>
+    // Function to populate required fields with selected student's data
+    function populateFields(selectedOption) {
+        if (selectedOption) {
+            // Get the selected student's data from the data attributes of the option
+            var city = selectedOption.dataset.city;
+            var email = selectedOption.dataset.email;
+            // Get other required fields' data similarly
+
+            // Populate the input fields with the retrieved data
+            document.getElementById('city').value = city;
+            document.getElementById('email').value = email;
+            // Populate other input fields similarly
+        }
+    }
+
+    // Add event listener to the select element
+    document.getElementById('selectedStudent').addEventListener('change', function () {
+        // Get the selected option
+        var selectedOption = this.options[this.selectedIndex];
+
+        // Populate the required fields with the selected student's data
+        populateFields(selectedOption);
+    });
+    // Function to populate required fields with selected course's data
+    function populateCourseFields(selectedOption) {
+        if (selectedOption) {
+            // Get the selected course's data from the data attributes of the option
+            var duration = selectedOption.dataset.duration;
+            var description = selectedOption.dataset.description;
+            var departmentId = selectedOption.dataset.departmentId;
+
+            // Populate the input fields with the retrieved data
+            document.getElementById('duration').value = duration;
+            document.getElementById('description').value = description;
+            document.getElementById('departmentId').value = departmentId;
+        }
+    }
+
+    // Add event listener to the select element for course
+    document.getElementById('selectedCourse').addEventListener('change', function () {
+        // Get the selected option
+        var selectedOption = this.options[this.selectedIndex];
+
+        // Populate the required fields with the selected course's data
+        populateCourseFields(selectedOption);
+    });
+   
+</script> *@
+
+@* <script>
+    
+        document.getElementById('selectedStudent').addEventListener('change', function () {
+            var selectedStudentName = this.value;
+
+            // Fetch the rest of the record for the selected student
+            fetch('/GetStudentDetails?SearchValue=' + encodeURIComponent(selectedStudentName))
+                .then(response => response.json())
+                .then(data => {
+                    // Populate the hidden inputs with the fetched data
+                    document.getElementById('city').value = data.city;
+                    document.getElementById('email').value = data.email;
+                    document.getElementById('gender').value = data.gender;
+                    document.getElementById('departmentId').value = data.departmentId;
+                    document.getElementById('phoneNumber').value = data.phoneNumber;
+                    document.getElementById('yearOfSchool').value = data.yearOfSchool;
+                    document.getElementById('schoolGrade').value = data.schoolGrade;
+
+                    // Hide the hidden inputs
+                    var hiddenInputs = document.querySelectorAll('input[type="hidden"]');
+                    hiddenInputs.forEach(input => {
+                        input.style.display = 'none';
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+    document.getElementById('selectedCourse').addEventListener('change', function () {
+        var selectedCourseName = this.value;
+
+        // Retrieve additional data related to the selected student via AJAX
+        fetch('/GetStudentDetails?SearchValue=' + selectedCourseName)
+            .then(response => response.json())
+            .then(data => {
+                // Populate the hidden input fields with the retrieved student data
+                document.getElementById('duration').value = data.duration;
+                document.getElementById('description').value = data.description;
+                document.getElementById('departmentId').value = data.departmentId;
+                var hiddenInputs = document.querySelectorAll('input[type="hidden"]');
+                hiddenInputs.forEach(input => {
+                    input.style.display = 'none';
+                });
+
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script> *@

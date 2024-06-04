@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "_AccountFormsLayout";
+}
+
+@model LoginViewModel
+<form class="signup-form" asp-action="LogIn">
+	
+	<div class="row">
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<label class="label" asp-for="Email"></label>
+				<input asp-for="Email" class="form-control">
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<label class="label" asp-for="Password"></label>
+				<input asp-for="Password" class="form-control" type="password"  id="inputPassword" autocomplete="current-password"/>
+			</div>
+		</div>
+		<div class="col-md-12 my-4">
+			<div class="form-group">
+				<div class="w-100">
+					<label class="checkbox-wrap checkbox-primary">
+						Save your Password
+						<input type="checkbox" asp-for="RememberMe" checked>
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary submit p-3">LogIn</button>
+			</div>
+		</div>
+	</div>
+	<div asp-validation-summary="All"></div>
+</form>
+<div class="w-100">
+	<p class="mt-4 ">Forget Password <a asp-action="ForgetPassword" class="ml-3">Reset Password</a></p>
+</div>
+<br />
+<div class="w-100">
+	<p class="mt-4">Are you new memmber !<a asp-action="Register" class="ml-3">Register Now</a></p>
+</div>
+<partial name="_ValidationScriptsPartial" />
+
+<script>
+	const togglePassword = document.querySelector('#togglePassword');
+	const password = document.querySelector('#id_password');
+
+	togglePassword.addEventListener('click', function (e) {
+		// toggle the type attribute
+		const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+		password.setAttribute('type', type);
+		// toggle the eye slash icon
+		this.classList.toggle('fa-eye-slash');
+	});
+</script>

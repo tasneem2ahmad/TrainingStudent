@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Training.DAL.Entities;
+@model UserViewModel;
+@{
+    var roles = (List<IdentityRole>)ViewData["Roles"];
+}
+<h1>Update User</h1>
+<form asp-action="Edit" id="form" data-id="@(Model?.Id ?? null)">
+    <partial name="_UserEditDelete" />
+    <div class="col-auto">
+        <label asp-for="Role" class="col-form-label"></label>
+    </div>
+    <div class="col-auto">
+        <select asp-for="Role" class="form-control">
+            <option value="">Select a role</option>
+            @foreach (var ins in ViewData["Roles"] as List<IdentityRole>)
+            {
+                <option value="@ins">@ins</option>
+            }
+
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+    <br />
+    <div class="col-auto">
+        <input type="submit" class="btn btn-primary" />
+    </div>
+   
+</form>
+@section Scripts {
+    <script>
+        // Function to handle checkbox click event
+        function handleCheckboxClick(checkbox) {
+            var roleName = checkbox.value;
+            var isChecked = checkbox.checked;
+
+            // Update user's roles list based on checkbox state
+            if (isChecked) {
+                // Add role to user's roles list
+                Model.Roles.push(roleName);
+            } else {
+                // Remove role from user's roles list
+                Model.Roles = Model.Roles.filter(function (r) {
+                    return r !== roleName;
+                });
+            }
+        }
+    </script>
+}
