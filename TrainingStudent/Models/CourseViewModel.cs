@@ -18,9 +18,10 @@ namespace TrainingStudent.Models
         [ForeignKey("Department")]
         [Required(ErrorMessage ="Department is required")]
         public int DepartmentId { get; set; }
-        public virtual ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
-        public virtual ICollection<Student> Students { get; set; } = new HashSet<Student>();
-        public virtual ICollection<CourseStudent> CoursesStudents { get; set; } = new HashSet<CourseStudent>();//add navigation properties to simplify querying and navigating the relationships.
+        public bool IsDeleted { get; set; } 
+        //public virtual ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
+        //public virtual ICollection<Student> Students { get; set; } = new HashSet<Student>();
+        //public virtual ICollection<CourseStudent> CoursesStudents { get; set; } = new HashSet<CourseStudent>();//add navigation properties to simplify querying and navigating the relationships.
 
     }
 }

@@ -43,6 +43,8 @@ namespace Training.DAL.Entities
         [Required]
         public int CourseTeacherId { get; set; }
         public Course? CourseTeacher { get; set; }
+        public bool IsDeleted { get; set; } = false;
+
         public virtual ICollection<Student> Students { get; set; } = new List<Student>();
     }
 }

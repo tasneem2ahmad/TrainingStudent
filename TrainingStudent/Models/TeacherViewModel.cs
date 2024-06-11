@@ -38,6 +38,8 @@ namespace TrainingStudent.Models
         [Required(ErrorMessage ="Course that you will teach is required")]
         public int CourseTeacherId { get; set; }
         public Course? CourseTeacher { get; set; }
+        public bool IsDeleted { get; set; }
+
         public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 
     }

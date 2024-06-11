@@ -6,7 +6,16 @@
     <partial name="_createEditDeleteCourse" />
     <br />
     <div>
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Delete" onclick="deleteCourse(@Model.Id)" class="btn btn-danger" /> |
         <a input type="button" href="/Courses/Index" class="btn btn-outline-secondary">Back</a>
     </div>
 </form>
+<script>
+    function deleteCourse(courseId) {
+        // Send AJAX request to delete course
+        // On success, hide the corresponding row
+        $.post('/Courses/Delete', { id: courseId }, function (data) {
+            $('#courseRow_' + courseId).hide();
+        });
+    }
+</script>

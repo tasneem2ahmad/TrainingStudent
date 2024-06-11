@@ -18,8 +18,9 @@ namespace Training.DAL.Entities
         public string Description { get; set; }
         [Required]
         public string Duration { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
-        
+
         [Required]
         public int DepartmentID { get; set; }
         public Department Department { get; set; }

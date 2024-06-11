@@ -29,6 +29,8 @@ namespace TrainingStudent.Models
         [Required(ErrorMessage = "Department is required")]
         public int DepartmentID { get; set; }
         public Department? Department { get; set; }
+        public bool IsDeleted { get; set; }
+
         public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
         public virtual ICollection<Teacher> Teachers { get; set; } = new HashSet<Teacher>();
         public virtual ICollection<CourseStudent> CoursesStudents { get; set; } = new HashSet<CourseStudent>();//add navigation properties to simplify querying and navigating the relationships.

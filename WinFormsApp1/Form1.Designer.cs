@@ -28,12 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            dataGridView1 = new DataGridView();
+            Users = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(65, 12);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(854, 449);
+            dataGridView1.TabIndex = 0;
+            // 
+            // Users
+            // 
+            Users.Location = new Point(944, 138);
+            Users.Name = "Users";
+            Users.Size = new Size(203, 58);
+            Users.TabIndex = 1;
+            Users.Text = "Users";
+            Users.UseVisualStyleBackColor = true;
+            Users.Click += button1_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1409, 518);
+            Controls.Add(Users);
+            Controls.Add(dataGridView1);
+            Name = "Form1";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dataGridView1;
+        private Button Users;
     }
 }

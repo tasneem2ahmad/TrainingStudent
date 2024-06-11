@@ -25,7 +25,8 @@ namespace Training.BLL.Repositories
        
         public async Task<int> Delete(Teacher departmet)
         {
-            context.Remove(departmet);
+            departmet.IsDeleted = true;
+            await Update(departmet);
             return await context.SaveChangesAsync();
         }
 
@@ -34,7 +35,7 @@ namespace Training.BLL.Repositories
             return await context.Teachers.FindAsync(id);
         }
 
-        public async Task< IEnumerable<Teacher>> GetAll() =>await context.Teachers.ToListAsync();
+        public async Task< IEnumerable<Teacher>> GetAll() =>await context.Teachers.Where(c => !c.IsDeleted).ToListAsync();
         
         public async Task< IEnumerable<Teacher>> SearchTeacher(string value)
         => await context.Teachers.Where(c => c.Name.Contains(value)).ToListAsync();

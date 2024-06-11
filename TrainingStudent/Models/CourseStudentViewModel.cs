@@ -18,5 +18,7 @@ namespace TrainingStudent.Models
         [Required(ErrorMessage = "Enter Student PracticalDegree")]
         public decimal PracticalDegree { get; set; }
         public decimal Max { get; set; } = 100;
+        public bool IsDeleted { get; set; }
+
     }
 }

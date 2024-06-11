@@ -23,7 +23,7 @@ namespace TrainingStudent.Controllers
     public class AccountsController : Controller
 	{
 		private object FormsAuthentication;
-        private readonly SomeService someService;
+        
 
         public Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> UserManager { get; }
 		public SignInManager<ApplicationUser> SignInManager { get; }
@@ -32,7 +32,7 @@ namespace TrainingStudent.Controllers
         public Microsoft.AspNetCore.Identity.RoleManager<IdentityRole> RoleManager { get; }
         public ILogger<AccountsController> Logger { get; }
 
-        public AccountsController(Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper, SchoolingContext context,Microsoft.AspNetCore.Identity.RoleManager<IdentityRole>roleManager,ILogger<AccountsController>logger,SomeService someService)
+        public AccountsController(Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper, SchoolingContext context,Microsoft.AspNetCore.Identity.RoleManager<IdentityRole>roleManager,ILogger<AccountsController>logger)
 		{
 			UserManager = userManager;
 			SignInManager = signInManager;
@@ -40,7 +40,7 @@ namespace TrainingStudent.Controllers
 			Context = context;
             RoleManager = roleManager;
             Logger = logger;
-            this.someService = someService;
+           
         }
 
 		#region Register
@@ -110,7 +110,6 @@ namespace TrainingStudent.Controllers
 
                             var claims = await UserManager.GetClaimsAsync(user);
                             Logger.LogInformation($"User {user.UserName} claims: {string.Join(", ", claims.Select(c => $"{c.Type} - {c.Value}"))}");
-                            await someService.CheckUserPermissionsAsync(user.Id);
 
                             if (roles.Contains("Manager"))
                             {

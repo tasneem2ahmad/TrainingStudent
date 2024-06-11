@@ -40,10 +40,11 @@ else
                 <th>Details</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>ResultReport</th>
             </tr>
         </thead>
 
-        @foreach (StudentViewModel item in Model)
+        @foreach (StudentViewModel item in Model.Where(c => c.IsDeleted == false))
         {
             <tbody>
                 <tr>
@@ -57,6 +58,12 @@ else
                     <td>@item.YearofSchool th</td>
                     <td>@item.SchoolGrade</td>
                     <partial name="_ButtonsIndex" model="item.Id.ToString()">
+                        <td>
+                            <a class="btn btn-secondary" asp-route-id="@item.Id" asp-action="ResultReport">
+                                <i class="fas fa-clipboard-list"></i>
+                                ResultReport
+                            </a>
+                        </td>
                 </tr>
             </tbody>
         }

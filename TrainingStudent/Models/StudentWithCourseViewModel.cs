@@ -19,5 +19,7 @@
         public decimal PracticalDegree {  get; set; }
         public decimal FinalDegree {  get; set; }
         public decimal MaxDegree {  get; set; }
+        public bool IsDeleted { get; set; }
+
     }
 }

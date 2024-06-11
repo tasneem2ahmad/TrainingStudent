@@ -45,7 +45,7 @@ else
             </tr>
         </thead>
 
-        @foreach (TeacherViewModel item in Model)
+        @foreach (TeacherViewModel item in Model.Where(c=>c.IsDeleted==false))
         {
             <tbody>
                 <tr>

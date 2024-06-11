@@ -47,10 +47,11 @@ else
                 <th>Details</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                
             </tr>
         </thead>
 
-        @foreach (StudentWithCourseViewModel item in Model)
+        @foreach (StudentWithCourseViewModel item in Model.Where(c => c.IsDeleted == false))
         {
             <tbody>
                 <tr>
@@ -69,6 +70,7 @@ else
                     <td>@(item.MidDegree + item.PracticalDegree + item.FinalDegree)</td>
                     <td>@item.MaxDegree</td>
                     <partial name="_ButtonsIndex" model="@item.ID.ToString()">
+                       
                 </tr>
             </tbody>
         i++;

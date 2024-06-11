@@ -29,16 +29,18 @@ namespace Training.BLL.Repositories
 
         public async Task<int> Delete(Course course)
         {
-            context.Remove(course);
+            course.IsDeleted = true;
+            await Update(course);
+            //context.Remove(course);
             return await context.SaveChangesAsync();
         }
 
         public async Task<Course> Get(int? id)
         {
-            return await context.Courses.FindAsync(id);
+           return await context.Courses.FirstOrDefaultAsync(c => c.Id == id && !c.IsDeleted);
         }
 
-        public async Task<IEnumerable<Course>> GetAll() => await context.Courses.ToListAsync();
+        public async Task<IEnumerable<Course>> GetAll() => await context.Courses.Where(c => !c.IsDeleted).ToListAsync();
 
         public async Task<IEnumerable<Course>> SearchCourse(string value)
         => await context.Courses.Where(c => c.Name.Contains(value)).ToListAsync();

@@ -24,7 +24,8 @@ namespace Training.BLL.Repositories
 
         public async Task<int> Delete(Department departmet)
         {
-            context.Remove(departmet);
+            departmet.IsDeleted = true;
+            await Update(departmet);
             return await context.SaveChangesAsync();
         }
 
@@ -33,7 +34,7 @@ namespace Training.BLL.Repositories
             return await context.Departments.FindAsync(id);
         }
 
-        public async Task< IEnumerable<Department>> GetAll() =>await context.Departments.ToListAsync();
+        public async Task< IEnumerable<Department>> GetAll() =>await context.Departments.Where(c => !c.IsDeleted).ToListAsync();
         
 
         public async Task<int> Update(Department departmet)

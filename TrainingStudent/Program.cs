@@ -38,11 +38,7 @@ builder.Services.AddAutoMapper(m => m.AddProfile(new CourseProfile()));
 builder.Services.AddAutoMapper(m => m.AddProfile(new DepartmentProfile()));
 builder.Services.AddAutoMapper(m => m.AddProfile(new CourseStudentProfile()));
 builder.Services.AddScoped<TableService>();
-builder.Services.AddScoped<UserInformation>();
-builder.Services.AddScoped<AllPermission>();
-builder.Services.AddScoped<PermissionHelper>();
-builder.Services.AddScoped<PermissionChecker>();
-builder.Services.AddScoped<SomeService>();
+
 
 //builder.Services.AddScoped<IGenericRepository, GenericRepositry>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

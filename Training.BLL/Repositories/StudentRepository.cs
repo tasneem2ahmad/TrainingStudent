@@ -26,7 +26,8 @@ namespace Training.BLL.Repositories
 
         public async Task<int> Delete(Student student)
         {
-            context.Remove(student);
+            student.IsDeleted = true;
+            await Update(student);
             return await context.SaveChangesAsync();
         }
 
@@ -35,7 +36,7 @@ namespace Training.BLL.Repositories
             return await context.Students.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Student>> GetAll() => await context.Students.ToListAsync();
+        public async Task<IEnumerable<Student>> GetAll() => await context.Students.Where(c => !c.IsDeleted).ToListAsync();
         
 
         public async Task<int> Update(Student student)

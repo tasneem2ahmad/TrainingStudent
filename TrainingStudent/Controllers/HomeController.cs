@@ -15,12 +15,12 @@ namespace TrainingStudent.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly SomeService someService;
+        
 
-        public HomeController(ILogger<HomeController> logger, SomeService someService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            this.someService = someService;
+          
         }
         
         [Authorize(Roles = "Manager")]

@@ -47,12 +47,13 @@ else
         {
             <tbody>
                 <tr>
+
                     <td>@item.Id</td>
                     <td>@item.Name</td>
                     <td>@item.DepartmentId</td>
                     <td>@item.Description</td>
                     <td>@item.Duration</td>
-                    <partial name="_ButtonsIndex" model="item.Id.ToString()">
+                    <partial name="_ButtonsIndex" model="item.Id.ToString()"/>
                 </tr>
             </tbody>
         }

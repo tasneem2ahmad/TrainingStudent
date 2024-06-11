@@ -17,6 +17,8 @@ namespace Training.DAL.Entities
         
         public int TeacherID { get; set; }
         public Teacher Teacher { get; set; }
+        public bool IsDeleted { get; set; } = false;
+
 
     }
 }

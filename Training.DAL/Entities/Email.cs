@@ -12,5 +12,6 @@ namespace Training.DAL.Entities
         public string Body { get; set; }
         public string To { get; set; }//reciever email
         public string Title { get; set; }
+        
     }
 }

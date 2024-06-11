@@ -16,22 +16,18 @@ namespace TrainingStudent.Controllers
     {
         private readonly IMapper mapper;
         private readonly Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager;
-        private readonly AllPermission allPermission;
-        private readonly SomeService someService;
-        private readonly PermissionHelper permissionHelper;
+
         private readonly TableService tableService;
 
         public IUnitOfWork UnitOfWork { get; }
        
 
-        public CoursesController( IUnitOfWork unitOfWork,IMapper mapper, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>userManager,AllPermission allPermission,SomeService someService,PermissionHelper permissionHelper,TableService tableService)
+        public CoursesController( IUnitOfWork unitOfWork,IMapper mapper, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>userManager,TableService tableService)
         {
             UnitOfWork = unitOfWork;
             this.mapper = mapper;
             this.userManager = userManager;
-            this.allPermission = allPermission;
-            this.someService = someService;
-            this.permissionHelper = permissionHelper;
+
             this.tableService = tableService;
         }
 
@@ -136,9 +132,11 @@ namespace TrainingStudent.Controllers
                 return NotFound();
             if (ModelState.IsValid)
             {
+                
+
                 var deletedCourse=mapper.Map<CourseViewModel,Course>(model);
                 await UnitOfWork.CourseRepository.Delete(deletedCourse);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             foreach (var modelStateKey in ModelState.Keys)
             {
@@ -151,28 +149,6 @@ namespace TrainingStudent.Controllers
             }
             Console.WriteLine("SaveDeleteCourse action isnot executing...");
             return View("Delete", model);
-        }
-        
-        public async Task<IActionResult> ManageCourses()
-        {
-            string userId = userManager.GetUserId(User);
-            var user = await userManager.FindByIdAsync(userId);
-
-            var accessibleActions = await someService.CheckUserPermissionsAsync(userId);
-            var userClaims = (await userManager.GetClaimsAsync(user)).ToList();
-            // Get the table names list from the TableService
-            var controllerPrefixes = tableService.GetTableNames();
-            // Pass the table names list as a parameter to GetPermissionsFromControllers
-            var allPermissions = permissionHelper.GetPermissionsFromControllers(controllerPrefixes);
-            var model = new ManageViewModel
-            {
-                AccessibleActions = accessibleActions,
-                UserId = userId,
-                UserClaims = userClaims,
-                AllPermissions = allPermissions
-            };
-
-            return View(model);
         }
 
     }
